@@ -112,8 +112,10 @@ def filter_by_dietary(recipes: List[Recipe], user: User) -> List[Recipe]:
     
     This causes: TypeError: 'NoneType' object is not iterable
     """
-    # BUG: No null check before iterating!
-    for restriction in user.dietary_restrictions:  # ← LINE 145: CRASHES IF None!
+    if not user.dietary_restrictions:
+        return recipes
+
+    for restriction in user.dietary_restrictions:
         recipes = [r for r in recipes if restriction in r.dietary_tags]
     
     return recipes

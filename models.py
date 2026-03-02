@@ -16,7 +16,7 @@ class User:
         self.id = id
         self.name = name
         self.email = email
-        self.dietary_restrictions = dietary_restrictions  # ← BUG: Can be None!
+        self.dietary_restrictions = dietary_restrictions or []
         self.created_at = datetime.now()
 
 
