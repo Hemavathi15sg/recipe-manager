@@ -105,17 +105,14 @@ def filter_by_rating(recipes: List[Recipe], min_rating: float) -> List[Recipe]:
 def filter_by_dietary(recipes: List[Recipe], user: User) -> List[Recipe]:
     """
     Filter recipes based on user's dietary restrictions.
-    
-    LINE 145: THE PRODUCTION BUG!
-    Assumes user.dietary_restrictions is a list,
-    but it can be None for users without preferences.
-    
-    This causes: TypeError: 'NoneType' object is not iterable
+    Returns all recipes unchanged when dietary_restrictions is None.
     """
-    # BUG: No null check before iterating!
-    for restriction in user.dietary_restrictions:  # ← LINE 145: CRASHES IF None!
+    if user.dietary_restrictions is None:
+        return recipes  # No filtering needed for users without dietary restrictions
+
+    for restriction in user.dietary_restrictions:
         recipes = [r for r in recipes if restriction in r.dietary_tags]
-    
+
     return recipes
 
 
