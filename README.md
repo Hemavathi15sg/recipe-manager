@@ -115,6 +115,19 @@ Follow workshop experiments to:
 4. Implement refactoring with Copilot CLI
 5. Validate with /speckit.analyze
 
+### Development Principles
+
+See [FlavorHub Constitution v1.1.0](.specify/memory/constitution.md) for:
+- **Reliability**: Input validation + null handling
+- **Testability**: ≥80% coverage for critical paths (TDD mandatory)
+- **Safety**: Dietary restrictions as legal liability
+- **Quality**: Type hints + error boundaries + no magic numbers/dead code
+- **Backward Compatibility**: No breaking API changes
+- **Architecture**: Modular design (4 modules: validation, filtering, aggregation, formatting)
+- **Performance**: p95 ≤500ms, caching strategy, optimized filter ordering
+
+All new features must pass Constitution Check (see templates in `.specify/templates/`).
+
 ---
 
 ## DO NOT

@@ -43,10 +43,10 @@ def test_bug_with_null_dietary():
         print("✅ Search succeeded!")
         print(f"Found {results['total']} recipes")
     except TypeError as e:
-        print("❌ CRASH! (This is Issue #247)")
+        print("❌ CRASH! (This is Issue #447)")
         print(f"Error: {e}")
         print()
-        print("Stack trace points to search.py line 145:")
+        print("Stack trace points to search.py line 447:")
         print("  for restriction in user.dietary_restrictions:")
         print("  TypeError: 'NoneType' object is not iterable")
         print()

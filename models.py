@@ -12,12 +12,18 @@ from datetime import datetime
 class User:
     """User model - has the dietary restrictions bug"""
     
-    def __init__(self, id: UUID, name: str, email: str, dietary_restrictions=None):
-        self.id = id
-        self.name = name
-        self.email = email
-        self.dietary_restrictions = dietary_restrictions  # ← BUG: Can be None!
-        self.created_at = datetime.now()
+    def __init__(
+        self, 
+        id: UUID, 
+        name: str, 
+        email: str, 
+        dietary_restrictions: Optional[List[str]] = None
+    ):
+        self.id: UUID = id
+        self.name: str = name
+        self.email: str = email
+        self.dietary_restrictions: Optional[List[str]] = dietary_restrictions  # ← BUG: Can be None!
+        self.created_at: datetime = datetime.now()
 
 
 class Recipe:
@@ -34,15 +40,15 @@ class Recipe:
         difficulty: str,
         avg_rating: float = 0.0
     ):
-        self.id = id
-        self.name = name
-        self.ingredients = ingredients
-        self.dietary_tags = dietary_tags
-        self.cuisine = cuisine
-        self.prep_time_minutes = prep_time_minutes
-        self.difficulty = difficulty
-        self.avg_rating = avg_rating
-        self.created_at = datetime.now()
+        self.id: UUID = id
+        self.name: str = name
+        self.ingredients: List[str] = ingredients
+        self.dietary_tags: List[str] = dietary_tags
+        self.cuisine: str = cuisine
+        self.prep_time_minutes: int = prep_time_minutes
+        self.difficulty: str = difficulty
+        self.avg_rating: float = avg_rating
+        self.created_at: datetime = datetime.now()
 
 
 # Sample data for demonstration
